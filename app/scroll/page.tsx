@@ -1,12 +1,12 @@
 "use client";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const textWrappers = document.querySelectorAll(".your-text-wrapper-class");
 
     const pinTrigger = ScrollTrigger.create({
@@ -31,7 +31,8 @@ export default function Home() {
       pinTrigger?.kill();
       tl.kill();
     };
-  });
+  }, []);
+
   return (
     <div className="content-wrapper">
       {/* Your component content */}

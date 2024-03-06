@@ -182,7 +182,7 @@
   --light: var(--color-surface-white);
   --mid: #7c7c6f;
   --grey: #gray;
-  --gray: #gray;
+  /* --gray: #gray; */
   --green: var(--color-shockingly-green);
   --green-dark: #0ae448;
   --green-light: var(--color-lt-green);
