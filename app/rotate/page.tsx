@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 
-export default function Home() {
+export default function Rotate() {
   const container = useRef(null);
 
   useGSAP(

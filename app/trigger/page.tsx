@@ -7,27 +7,54 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Trigger() {
+  //   useEffect(() => {
+  //     const listWrapperEl = document.querySelector(".side-scroll-list-wrapper");
+  //     const listEl = document.querySelector(".side-scroll-list");
+
+  //     if (!listWrapperEl || !listEl) return;
+
+  //     gsap.to(listEl, {
+  //       x: () => -(listEl.clientWidth - listWrapperEl.clientWidth),
+  //       ease: "none",
+  //       scrollTrigger: {
+  //         trigger: ".side-scroll",
+  //         start: "top top", // 要素の上端（top）が、ビューポートの上端（top）にきた時
+  //         end: () => `+=${listEl.clientWidth - listWrapperEl.clientWidth}`,
+  //         scrub: 1,
+  //         pin: true,
+  //         markers: true,
+  //         anticipatePin: 1,
+  //         invalidateOnRefresh: true,
+  //       },
+  //     });
+
+  //     return () => {};
+  //   }, []);
+
   useLayoutEffect(() => {
-    const imageWrappers = document.querySelectorAll(".image-wrapper");
+    const listWrapperEl = document.querySelector(".side-scroll-list-wrapper");
+    const listEl = document.querySelector(".side-scroll-list");
+
+    if (!listWrapperEl || !listEl) return;
 
     const pinTrigger = ScrollTrigger.create({
-      trigger: ".content-wrapper",
+      trigger: ".side-scroll",
       pin: true,
       start: "top top",
-      end: "+=50%",
+      end: () => `+=${listEl.clientWidth - listWrapperEl.clientWidth}`,
     });
 
     let tl = gsap.timeline();
 
-    tl.to(imageWrappers, {
-      x: "50%",
-      opacity: 1,
-      duration: 1,
+    tl.to(listEl, {
+      x: () => -(listEl.clientWidth - listWrapperEl.clientWidth),
       scrollTrigger: {
         start: () => pinTrigger?.start,
         end: () => pinTrigger?.end,
+        scrub: true,
         markers: true,
-        scrub: 2,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
       },
     });
 
@@ -38,28 +65,58 @@ export default function Trigger() {
   }, []);
 
   return (
-    <div className="content-wrapper">
-      <div className="image-wrapper relative flex flex-col opacity-0">
-        <Image
-          src="https://source.unsplash.com/random/1"
-          alt="bg1"
-          width={400}
-          height={400}
-          className="py-10"
-        />
-        <Image
-          src="https://source.unsplash.com/random/2"
-          alt="bg2"
-          width={400}
-          height={400}
-        />
-        <Image
-          src="https://source.unsplash.com/random/3"
-          alt="bg3"
-          width={400}
-          height={400}
-        />
-      </div>
+    <div>
+      <h1 className="title">GSAP Scroll Practice</h1>
+      <section className="normal section">
+        <div className="container">
+          <h2 className="normal-heading heading">普通のセクション</h2>
+          <p className="normal-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit,
+            quasi quibusdam. Distinctio sint repellat architecto officia
+            doloremque dicta explicabo repellendus voluptates molestiae itaque
+            aspernatur minus, consequuntur vero eligendi suscipit accusantium.
+            <br />
+            <br />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, qui
+            aliquam sunt ad explicabo nam suscipit quod adipisci, reprehenderit,
+            dolorem pariatur laboriosam ea repellendus? Repudiandae fugit nihil
+            exercitationem expedita quae?
+          </p>
+        </div>
+      </section>
+
+      <section className="side-scroll section">
+        <div className="side-scroll-container container">
+          <h2 className="side-scroll-heading heading">
+            横にスクロールするセクション
+          </h2>
+          <div className="side-scroll-list-wrapper">
+            <ul className="side-scroll-list">
+              <li className="side-scroll-item">Card</li>
+              <li className="side-scroll-item">Card</li>
+              <li className="side-scroll-item">Card</li>
+              <li className="side-scroll-item">Card</li>
+              <li className="side-scroll-item">Card</li>
+              <li className="side-scroll-item">Card</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="normal section">
+        <div className="container">
+          <h2 className="normal-heading heading">普通のセクション</h2>
+          <p className="normal-text">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis
+            inventore magni sit laboriosam modi veniam, quisquam ea. Id
+            provident nobis magnam, quibusdam, impedit ducimus fuga odio,
+            tempore iste optio illo! Lorem ipsum dolor sit, amet consectetur
+            adipisicing elit. Modi beatae totam at, voluptate quidem enim odio,
+            perspiciatis vero aut sed delectus ea quam! Odio, excepturi
+            laboriosam error possimus eius quasi!
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
