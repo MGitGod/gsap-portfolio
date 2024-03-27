@@ -13,11 +13,8 @@ function Model() {
 
 export default function Threed() {
   return (
-    <main>
-      <Canvas
-        camera={{ position: [2, 1, 2], near: 0.05 }}
-        style={{ marginTop: 100, height: 600 }}
-      >
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <Canvas camera={{ position: [2, 1, 2], near: 0.05 }}>
         <group>
           <Model />
         </group>

@@ -9,8 +9,8 @@ const navigation = [
   { id: 3, name: "Rotate", href: "/rotate" },
   { id: 3, name: "Zoom", href: "/zoom" },
   { id: 4, name: "Trigger", href: "/trigger" },
-  { id: 5, name: "Effect", href: "/effect" },
-  { id: 6, name: "3D", href: "/3d" },
+  { id: 5, name: "3D", href: "/3d" },
+  { id: 6, name: "Parallax", href: "/parallax" },
 ];
 
 const joinStr = (...classes: string[]) => {
