@@ -6,11 +6,11 @@ import Link from "next/link";
 const navigation = [
   { id: 1, name: "Home", href: "/" },
   { id: 2, name: "Scroll", href: "/scroll" },
-  { id: 3, name: "Rotate", href: "/rotate" },
   { id: 3, name: "Zoom", href: "/zoom" },
   { id: 4, name: "Trigger", href: "/trigger" },
   { id: 5, name: "3D", href: "/3d" },
   { id: 6, name: "Parallax", href: "/parallax" },
+  { id: 3, name: "Gsap", href: "/gsap" },
 ];
 
 const joinStr = (...classes: string[]) => {
